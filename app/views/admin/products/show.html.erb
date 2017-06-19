@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <%= image_tag @product.avatar.url(:medium) %>
+</p>
+
+<p>
   <strong>Name:</strong>
   <%= @product.name %>
 </p>
@@ -22,12 +26,12 @@
 
 <p>
   <strong>Brand:</strong>
-  <%= @product.brand %>
+  <%= @product.brand.try(:name) %>
 </p>
 
 <p>
   <strong>Category:</strong>
-  <%= @product.category %>
+  <%= @product.category.try(:name) %>
 </p>
 
 <%= link_to 'Edit', edit_admin_product_path(@product) %> |
