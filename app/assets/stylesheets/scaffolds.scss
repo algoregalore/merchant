@@ -1,7 +1,7 @@
 body {
   background-color: #fff;
   color: #333;
-  margin: 33px;
+  margin: 15px;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
@@ -21,23 +21,26 @@ pre {
 
 a {
   color: #000;
+  font-weight: underline;
 
   &:visited {
-    color: #666;
+    color: #000;
   }
 
   &:hover {
-    color: #fff;
+    color: #000;
     background-color: #000;
   }
 }
 
 th {
-  padding-bottom: 5px;
+  padding-bottom: 10px;
+  background-color: magenta;
 }
 
+
 td {
-  padding: 0 5px 7px;
+  vertical-align: bottom;
 }
 
 div {

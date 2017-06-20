@@ -1,27 +1,39 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Brands</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4
+                col-sm-6 col-sm-offset-3">
 
-  <tbody>
-    <% @brands.each do |brand| %>
-      <tr>
-        <td><%= brand.name %></td>
-        <td><%= link_to 'Show', admin_brand_path(brand) %></td>
-        <td><%= link_to 'Edit', edit_admin_brand_path(brand) %></td>
-        <td><%= link_to 'Destroy', admin_brand_path(brand), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <h1>Brands</h1>
 
-<br>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th colspan="3">Options</th>
+          </tr>
+        </thead>
 
-<%= link_to 'New Brand', new_admin_brand_path %>
+        <tbody>
+          <% @brands.each do |brand| %>
+            <tr>
+              <td><%= brand.name %></td>
+              <td><%= link_to '<i class="fa fa-eye" aria-hidden="true"></i>
+              '.html_safe, admin_brand_path(brand), class: 'btn btn-default' %></td>
+              <td><%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>
+              '.html_safe, edit_admin_brand_path(brand), class: 'btn btn-default' %></td>
+              <td><%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>
+              '.html_safe, admin_brand_path(brand), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default' %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <br>
+      <%= link_to 'New Brand', new_admin_brand_path, class: 'btn btn-default'%>
+
+    </div>
+  </div>
+</div>

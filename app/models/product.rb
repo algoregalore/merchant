@@ -2,6 +2,12 @@ class Product < ApplicationRecord
   belongs_to :brand
   belongs_to :category
 
+# names have to be there and the name is unique to the brand
+  validates :name, :brand, :category, presence: true
+  validates_uniqueness_of :name, scope: :brand_id
+  validates :price, numericality: true
+  validates :quantity, numericality: { only_integer: true }
+
   has_attached_file :avatar, styles: { medium: '300x300', thumb: '100x100>' },
     default_url: "missing_:style.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
