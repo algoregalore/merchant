@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :users
 # sets up in address as admin/whatever
   namespace :admin do
     resources :products

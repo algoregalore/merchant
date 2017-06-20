@@ -1,4 +1,6 @@
 class Admin::ProductsController < ApplicationController
+  # WO account you can look around but not change anything
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
