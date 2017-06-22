@@ -1,16 +1,36 @@
 class Product < ApplicationRecord
   belongs_to :brand
   belongs_to :category
+  has_many :line_items
+  before_destroy :ensure_not_referenced_by_any_line_item
 
 # names have to be there and the name is unique to the brand
   validates :name, :brand, :category, presence: true
   validates_uniqueness_of :name, scope: :brand_id
+
   validates_numericality_of :price, greater_than_or_equal_to: 0.01
   validates_numericality_of :quantity, greater_than_or_equal_to: 0
 
   has_attached_file :avatar, styles: { medium: '300x300', thumb: '100x100>' },
     default_url: "missing_:style.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+
+  def self.search_by_name_or_description(search_term)
+    where("name LIKE ? OR description LIKE ?", "%#{search_term}%", "%#{search_term}%")
+  end
+
+  private
+  # make sure no one bought product before we toss it, if empty return true so you can delete it
+  # if you toss product that someone bought their order history will have   problems
+  def ensure_not_referenced_by_any_line_item
+    if line_items.empty?
+      return true
+    else
+      errors.add(:base, 'line items present')
+      return false
+    end
+  end
+
 end
 
 # == Schema Information
