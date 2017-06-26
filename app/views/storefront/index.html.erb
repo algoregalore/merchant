@@ -34,18 +34,24 @@
             <span class="pull-right text-right">
               <h5><%= number_to_currency(product.price) %></h5>
             </span>
+
+          <!-- opens modal -->
            <a href="#"" data-toggle="modal"
                       data-target="#myModal_<%= product.id %>" >
             <h5><%= product.name %></h5>
             <small>quick info</small>
           </a>
+
+          <!-- add to cart button -->
+          <%= button_to 'Add to Cart', line_items_path(product_id: product),
+              class: 'btn btn-sm btn-success' %>
         </div>
       </div>
     </div>
 
 
 
-<!-- Modal -->
+      <!-- Modal -->
       <div class="modal fade" id="myModal_<%= product.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
