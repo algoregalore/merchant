@@ -1,6 +1,11 @@
 class Order < ApplicationRecord
   has_many :line_items, dependent: :destroy
   belongs_to :user
+
+  validates :name, :address, :user_id, presence: true
+
+  PAYMENT_TYPES = ["Cash", "Check", "PayPal", "COD", "Credit", "Debit"]
+  validates :pay_type, inclusion: PAYMENT_TYPES
 end
 
 # == Schema Information
