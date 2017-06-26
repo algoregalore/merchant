@@ -7,6 +7,7 @@
       <th>Quantity</th>
       <th>Unit Price</th>
       <th>Total Price</th>
+      <th>Delete Item</th>
     </tr>
   </thead>
   <tbody>
@@ -16,6 +17,8 @@
       <td><%= item.quantity %></td>
       <td><%= number_to_currency(item.price) %></td>
       <td><%= number_to_currency(item.total_price) %></td>
+      <td><%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>
+          '.html_safe, item, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -23,5 +26,8 @@
 
 <h3>subtotal: <%= number_to_currency(@cart.subtotal) %></h3>
 
-<%= link_to 'continue shopping', shop_path, class: 'btn btn-sm btn-success' %>
-<%= link_to 'empty cart', @cart, method: :delete, data: {confirm: 'are you sure?'}, class: 'btn btn-sm btn-danger' %>
+<%= link_to 'continue shopping', shop_path %> /
+<%= link_to 'empty cart', @cart, method: :delete, data: {confirm: 'are you sure?'} %>
+<p>
+<%= link_to 'checkout', new_order_path, class: 'btn btn-info btn-default' %>
+</p>
