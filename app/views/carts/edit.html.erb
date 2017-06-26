@@ -26,8 +26,8 @@
 
 <h3>subtotal: <%= number_to_currency(@cart.subtotal) %></h3>
 
-<%= link_to 'continue shopping', shop_path, class: 'btn btn-sm btn-success' %>
-<%= link_to 'empty cart', @cart, method: :delete, data: {confirm: 'are you sure?'}, class: 'btn btn-sm btn-danger' %>
+<%= link_to 'continue shopping', shop_path %> /
+<%= link_to 'empty cart', @cart, method: :delete, data: {confirm: 'are you sure?'} %>
 <p>
 <%= link_to 'checkout', new_order_path, class: 'btn btn-info btn-default' %>
 </p>

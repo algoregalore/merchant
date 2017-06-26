@@ -13,7 +13,7 @@ class LineItemsController < ApplicationController
       redirect_to shop_path
     else
       flash.now[:alert] = "couldn't add item"
-      redirect_to :back
+      redirect_back(fallback_location: shop_path)
     end
 
   end
