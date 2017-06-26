@@ -6,7 +6,7 @@ class LineItemsController < ApplicationController
     # find product and save it - id is in params
     product = Product.find(params[:product_id])
     # build it to line item
-    @line_item = @cart.line_items.build(product: product, price: product.price)
+    @line_item = @cart.add_product(product.id)
 
     if @line_item.save
       flash[:notice] = "#{product.name} was added to your cart!"
