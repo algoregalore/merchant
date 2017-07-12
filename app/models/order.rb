@@ -12,8 +12,13 @@ class Order < ApplicationRecord
       item.cart_id = nil
       line_items << item
     end
-
   end
+
+  def subtotal
+    #SQL (faster)
+    line_items.select("SUM(quantity * price) AS sum")[0].sum
+  end
+
 end
 
 # == Schema Information
