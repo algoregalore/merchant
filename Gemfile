@@ -42,6 +42,7 @@ gem 'annotate'
 gem 'paperclip', '~> 5.0.0'
 gem 'starter_generators'
 gem 'devise'
+gem 'figaro'
 
 # end our gems!!!
 
